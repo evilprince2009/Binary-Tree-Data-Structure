@@ -27,6 +27,36 @@ public class Tree {
         }
     }
 
+    private void traversePreOrder(Node root) {
+        if (root == null) return;
+        System.out.print(root.value + " ");
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+    public void traversePreOrder() {
+        traversePreOrder(root);
+    }
+    private void traverseInOrder(Node root) {
+        if (root == null) return;
+        traversePreOrder(root.leftChild);
+        System.out.print(root.value + " ");
+        traversePreOrder(root.rightChild);
+    }
+    public void traverseInOrder() {
+        traverseInOrder(root);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null) return;
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+        System.out.print(root.value + " ");
+    }
+
+    public void traversePostOrder() {
+        traversePostOrder(root);
+    }
+
     public boolean find(int value) {
         Node current = root;
         while (current != null) {
@@ -55,3 +85,4 @@ public class Tree {
         }
     }
 }
+

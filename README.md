@@ -6,4 +6,7 @@ This Binary Tree implements methods below.
 ```
 insert(int item): void
 find(int item): boolean
+traversePreOrder(): void
+traverseInOrder(): void
+traversePostOrder(): void
 ```
