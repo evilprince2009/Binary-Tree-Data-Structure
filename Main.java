@@ -8,6 +8,7 @@ public class Main {
         customTree.insert(6);
         customTree.insert(8);
         customTree.insert(10);
+        System.out.println(customTree.height());
         System.out.println(customTree.find(7));
         System.out.println(customTree.find(13));
         customTree.traversePreOrder();

@@ -9,4 +9,5 @@ find(int item): boolean
 traversePreOrder(): void
 traverseInOrder(): void
 traversePostOrder(): void
+height(): int
 ```
