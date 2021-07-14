@@ -1,6 +1,7 @@
 public class Tree {
     private Node root;
 
+    // Usable public methods
     public void insert(int value) {
         Node node = new Node(value);
         if (root == null) {
@@ -27,32 +28,12 @@ public class Tree {
         }
     }
 
-    private void traversePreOrder(Node root) {
-        if (root == null) return;
-        System.out.print(root.value + " ");
-        traversePreOrder(root.leftChild);
-        traversePreOrder(root.rightChild);
-    }
     public void traversePreOrder() {
         traversePreOrder(root);
     }
     
-    private void traverseInOrder(Node root) {
-        if (root == null) return;
-        traversePreOrder(root.leftChild);
-        System.out.print(root.value + " ");
-        traversePreOrder(root.rightChild);
-    }
-
     public void traverseInOrder() {
         traverseInOrder(root);
-    }
-
-    private void traversePostOrder(Node root) {
-        if (root == null) return;
-        traversePreOrder(root.leftChild);
-        traversePreOrder(root.rightChild);
-        System.out.print(root.value + " ");
     }
 
     public void traversePostOrder() {
@@ -73,16 +54,58 @@ public class Tree {
         return false;
     }
 
-    private int height(Node root) {
-        if (root == null) return -1;
-        if (root.leftChild == null && root.rightChild == null) return 0;
-        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
-    }
-
     public int height() {
         return height(root);
     }
 
+    public int minValue() {
+        return minValue(root);
+    }
+
+    // Private helper methods
+
+    private void traversePreOrder(Node root) {
+        if (root == null) return;
+        System.out.print(root.value + " ");
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+
+    private void traverseInOrder(Node root) {
+        if (root == null) return;
+        traversePreOrder(root.leftChild);
+        System.out.print(root.value + " ");
+        traversePreOrder(root.rightChild);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null) return;
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+        System.out.print(root.value + " ");
+    }
+
+    private int height(Node root) {
+        if (root == null) return -1;
+        if (leafNode(root)) return 0;
+        return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    }
+
+    private boolean leafNode(Node root) {
+        return root.leftChild == null && root.rightChild == null;
+    } 
+
+    private int minValue(Node root) {
+        if (leafNode(root)) {
+            return root.value;
+        }
+
+        int left = minValue(root.leftChild);
+        int right = minValue(root.rightChild);
+        return Math.min(Math.min(left, right), root.value);
+    }
+
+    // Base implementation
     private class Node {
         private int value;
         private Node leftChild;
