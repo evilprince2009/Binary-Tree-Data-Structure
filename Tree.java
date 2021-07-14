@@ -62,13 +62,28 @@ public class Tree {
         return minValue(root);
     }
 
-    // Private helper methods
+    public boolean equals(Tree other) {
+        if (other == null) {
+            return false;
+        }
+        return equals(root, other.root);
+    }
 
+    // Private helper methods
     private void traversePreOrder(Node root) {
         if (root == null) return;
         System.out.print(root.value + " ");
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
+    }
+
+    private boolean equals(Node first, Node second) {
+        if (first == null && second == null) return true;
+        if (first != null && second != null) {
+            return first.value == second.value && equals(first.leftChild, second.leftChild) && equals(first.rightChild, second.rightChild);
+        }
+
+        return false;
     }
 
     private void traverseInOrder(Node root) {

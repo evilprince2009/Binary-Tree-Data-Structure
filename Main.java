@@ -16,5 +16,17 @@ public class Main {
         customTree.traverseInOrder();
         System.out.println();
         customTree.traversePostOrder();
+        System.out.println();
+        // ----------------------------
+        Tree scustomTree = new Tree();
+        scustomTree.insert(7);
+        scustomTree.insert(4);
+        scustomTree.insert(9);
+        scustomTree.insert(1);
+        scustomTree.insert(6);
+        scustomTree.insert(8);
+        scustomTree.insert(10);
+        System.out.println(customTree.equals(scustomTree));
+        System.out.println(customTree.equals(null));
     }
 }

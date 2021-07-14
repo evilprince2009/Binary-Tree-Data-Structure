@@ -11,4 +11,5 @@ traverseInOrder(): void
 traversePostOrder(): void
 height(): int
 minValue(): int
+equals(Tree other): boolean
 ```
