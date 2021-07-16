@@ -28,5 +28,7 @@ public class Main {
         scustomTree.insert(10);
         System.out.println(customTree.equals(scustomTree));
         System.out.println(customTree.equals(null));
+        System.out.println(customTree.isBinarySearchTree());
+        System.out.println(scustomTree.isBinarySearchTree());
     }
 }
