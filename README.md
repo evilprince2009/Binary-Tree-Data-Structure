@@ -13,4 +13,5 @@ height(): int
 minValue(): int
 equals(Tree other): boolean
 isBinarySearchTree(): boolean
+getNodesAtDistance(int distance): ArrayList<Integer>
 ```

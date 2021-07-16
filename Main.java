@@ -31,5 +31,9 @@ public class Main {
         System.out.println(customTree.equals(null));
         System.out.println(customTree.isBinarySearchTree());
         System.out.println(scustomTree.isBinarySearchTree());
+        var list = customTree.getNodesAtDistance(1);
+        for (var item : list) {
+            System.out.print(item + " ");
+        }
     }
 }

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Tree {
     private Node root;
 
@@ -76,6 +78,12 @@ public class Tree {
         return equals(root, other.root);
     }
 
+    public ArrayList<Integer> getNodesAtDistance(int distance) {
+        ArrayList<Integer> nodes = new ArrayList<Integer>();
+        getNodesAtDistance(root, distance, nodes);
+        return nodes;
+    }
+
     public boolean isBinarySearchTree() {
         return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
@@ -86,6 +94,16 @@ public class Tree {
         System.out.print(root.value + " ");
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
+    }
+
+    private void getNodesAtDistance(Node root, int distance, ArrayList<Integer> buffer) {
+        if (root == null) return;
+        if (distance == 0) {
+            buffer.add(root.value);
+            return;
+        }
+        getNodesAtDistance(root.leftChild, distance - 1, buffer);
+        getNodesAtDistance(root.rightChild, distance - 1, buffer);
     }
 
     private boolean equals(Node first, Node second) {
