@@ -59,7 +59,14 @@ public class Tree {
     }
 
     public int minValue() {
-        return minValue(root);
+        if (root == null) throw new IllegalStateException("Tree is empty");
+        Node current = root;
+        Node last = current;
+        while (current != null) {
+            last = current;
+            current = current.leftChild;
+        }
+        return last.value;
     }
 
     public boolean equals(Tree other) {
@@ -110,15 +117,15 @@ public class Tree {
         return root.leftChild == null && root.rightChild == null;
     } 
 
-    private int minValue(Node root) {
-        if (leafNode(root)) {
-            return root.value;
-        }
+    // private int minValue(Node root) {
+    //     if (leafNode(root)) {
+    //         return root.value;
+    //     }
 
-        int left = minValue(root.leftChild);
-        int right = minValue(root.rightChild);
-        return Math.min(Math.min(left, right), root.value);
-    }
+    //     int left = minValue(root.leftChild);
+    //     int right = minValue(root.rightChild);
+    //     return Math.min(Math.min(left, right), root.value);
+    // }
 
     // Base implementation
     private class Node {
