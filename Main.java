@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        // Code for testing implementation goes here
         Tree customTree = new Tree();
         customTree.insert(7);
         customTree.insert(4);
