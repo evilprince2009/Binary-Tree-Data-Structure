@@ -3,15 +3,13 @@
 A basic implementation of Binary Tree data structure from scratch in Java.
 This Binary Tree implements methods below.
 
-```
-insert(int item): void
-find(int item): boolean
-traversePreOrder(): void
-traverseInOrder(): void
-traversePostOrder(): void
-height(): int
-minValue(): int
-equals(Tree other): boolean
-isBinarySearchTree(): boolean
-getNodesAtDistance(int distance): ArrayList<Integer>
-```
+- `insert(int item): void`
+- `find(int item): boolean`
+- `traversePreOrder(): void`
+- `traverseInOrder(): void`
+- `traversePostOrder(): void`
+- `height(): int`
+- `minValue(): int`
+- `equals(Tree other): boolean`
+- `isBinarySearchTree(): boolean`
+- `getNodesAtDistance(int distance): ArrayList<Integer>`
