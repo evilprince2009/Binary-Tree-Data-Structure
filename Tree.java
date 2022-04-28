@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Tree {
+
     private Node root;
 
     // Usable public methods
@@ -14,14 +15,13 @@ public class Tree {
         Node current = root;
         while (true) {
             if (value < current.value) {
-                if(current.leftChild == null) {
+                if (current.leftChild == null) {
                     current.leftChild = node;
                     break;
                 }
                 current = current.leftChild;
-            }
-            else {
-                if(current.rightChild == null) {
+            } else {
+                if (current.rightChild == null) {
                     current.rightChild = node;
                     break;
                 }
@@ -33,7 +33,7 @@ public class Tree {
     public void traversePreOrder() {
         traversePreOrder(root);
     }
-    
+
     public void traverseInOrder() {
         traverseInOrder(root);
     }
@@ -61,7 +61,8 @@ public class Tree {
     }
 
     public int minValue() {
-        if (root == null) throw new IllegalStateException("Tree is empty");
+        if (root == null)
+            throw new IllegalStateException("Tree is empty");
         Node current = root;
         Node last = current;
         while (current != null) {
@@ -79,7 +80,7 @@ public class Tree {
     }
 
     public ArrayList<Integer> getNodesAtDistance(int distance) {
-        ArrayList<Integer> nodes = new ArrayList<Integer>();
+        ArrayList<Integer> nodes = new ArrayList<>();
         getNodesAtDistance(root, distance, nodes);
         return nodes;
     }
@@ -90,14 +91,16 @@ public class Tree {
 
     // Private helper methods
     private void traversePreOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
         System.out.print(root.value + " ");
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
     }
 
     private void getNodesAtDistance(Node root, int distance, ArrayList<Integer> buffer) {
-        if (root == null) return;
+        if (root == null)
+            return;
         if (distance == 0) {
             buffer.add(root.value);
             return;
@@ -107,60 +110,60 @@ public class Tree {
     }
 
     private boolean equals(Node first, Node second) {
-        if (first == null && second == null) return true;
+        if (first == null && second == null)
+            return true;
         if (first != null && second != null) {
-            return first.value == second.value && equals(first.leftChild, second.leftChild) && equals(first.rightChild, second.rightChild);
+            return first.value == second.value && equals(first.leftChild, second.leftChild)
+                    && equals(first.rightChild, second.rightChild);
         }
 
         return false;
-    } 
+    }
 
     private boolean isBinarySearchTree(Node root, int min, int max) {
-        if (root == null) return true;
-        if (root.value < min || root.value > max) return false;
+        if (root == null)
+            return true;
+        if (root.value < min || root.value > max)
+            return false;
 
-        return isBinarySearchTree(root.leftChild, min, root.value - 1) && isBinarySearchTree(root.rightChild, root.value + 1, max);
+        return isBinarySearchTree(root.leftChild, min, root.value - 1)
+                && isBinarySearchTree(root.rightChild, root.value + 1, max);
     }
 
     private void traverseInOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
         traversePreOrder(root.leftChild);
         System.out.print(root.value + " ");
         traversePreOrder(root.rightChild);
     }
 
     private void traversePostOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
         System.out.print(root.value + " ");
     }
 
     private int height(Node root) {
-        if (root == null) return -1;
-        if (leafNode(root)) return 0;
+        if (root == null)
+            return -1;
+        if (leafNode(root))
+            return 0;
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 
     private boolean leafNode(Node root) {
         return root.leftChild == null && root.rightChild == null;
-    } 
-
-    // private int minValue(Node root) {
-    //     if (leafNode(root)) {
-    //         return root.value;
-    //     }
-
-    //     int left = minValue(root.leftChild);
-    //     int right = minValue(root.rightChild);
-    //     return Math.min(Math.min(left, right), root.value);
-    // }
+    }
 
     // Base implementation
     private class Node {
         private int value;
         private Node leftChild;
         private Node rightChild;
+
         public Node(int value) {
             this.value = value;
         }
